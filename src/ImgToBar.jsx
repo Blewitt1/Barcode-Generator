@@ -105,7 +105,8 @@ export const ImgToBar = () => {
 
     
     return (
-        <div className='container'>
+        <div className='page'>
+            <div className='container'>
             <h1>Barcode Generator</h1>
             <p>Either enter an image or paste text to generate barcodes.</p>
             <input type='file' onChange={handleImage}/>
@@ -130,6 +131,8 @@ export const ImgToBar = () => {
                 </li>)}
             </ul>
         </div>
+        </div>
+        
         
     )
 }

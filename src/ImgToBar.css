@@ -40,6 +40,13 @@ body {
   background: #f2f2f7;
   font-size: 16px;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 input, textarea {
   font-size: 16px;
 }
@@ -64,4 +71,11 @@ input::file-selector-button{
 }
 h1 {
   font-size: clamp(20px, 3vw, 32px);
+}
+.page{
+  padding: 16px;
+  width: 100%;
+}
+* {
+  box-sizing: border-box;
 }
