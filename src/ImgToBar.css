@@ -6,23 +6,39 @@
     flex-wrap: wrap;
     gap: 10px;
     margin: 15px;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
 }
-.barcodes{
+.barcodes {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 10px;
-    padding-left: 0px;
+    padding-left: 0;
 }
+.image-preview img {
+    width: 100%;
+    max-width: 400px;   /* controls how big it can get */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 ul{
     list-style: none;
 }
-textarea {
+textarea, input {
   width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
   height: 120px;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
   background: #f2f2f7;
+  font-size: 16px;
 }
 input, textarea {
   font-size: 16px;
@@ -45,4 +61,7 @@ input::file-selector-button{
     border-radius: 12px;
     font-size: 16px;
     border: none;
+}
+h1 {
+  font-size: clamp(20px, 3vw, 32px);
 }

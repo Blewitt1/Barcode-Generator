@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Tesseract from 'tesseract.js';
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import './ImgToBar.css'
-import { BarcodeGeneratorComponent } from '@syncfusion/ej2-react-barcode-generator';
 import imageCompression from 'browser-image-compression';
+import JsBarcode from 'jsbarcode';
 
 export const ImgToBar = () => {
     const [imgSrc, setImgSrc] = useState(null);
@@ -86,6 +86,22 @@ export const ImgToBar = () => {
         else handleTextExtraction();
     };
     
+    function Barcode({ value }) {
+    const ref = useRef(null);
+
+    useEffect(() => {
+        if (ref.current) {
+        JsBarcode(ref.current, value, {
+            format: "CODE128",
+            width: 2,
+            height: 80,
+            displayValue: true,
+        });
+        }
+    }, [value]);
+
+    return <svg ref={ref} />;
+    }
 
     
     return (
@@ -100,13 +116,18 @@ export const ImgToBar = () => {
                 <button onClick={handleExtract}>Extract barcode numbers</button>
             </div>
             
-            {!!imgSrc && isCropping && (
+            <div className='image-preview'>
+                {!!imgSrc && isCropping && (
                 <ReactCrop crop={crop} onChange={c => setCrop(c)}>
                     <img ref={imgRef} src={imgSrc} />
                 </ReactCrop>
-            )}
+                )}
+            </div>
+            
             <ul className='barcodes'>
-                {codes.map((code, index) => <li key={index}><BarcodeGeneratorComponent type="Code128" value={code}/></li>)}
+                {codes.map((code, index) => <li key={index}>
+                    <Barcode value={code}/>
+                </li>)}
             </ul>
         </div>
         
