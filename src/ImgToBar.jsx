@@ -26,7 +26,9 @@ export const ImgToBar = () => {
     }
 
     function handleTextExtraction(){
-        const output = ((textInput).match(/\d{4,}/g)) || [];
+        const date = new Date();
+        const banned = [String(date.getFullYear()), String(date.getFullYear() - 1)]
+        const output = ((textInput).match(/\d{4,}/g)).filter(code => !banned.includes(code)) || [];
         setCodes(output);
     }
     
