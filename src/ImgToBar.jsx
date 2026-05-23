@@ -114,7 +114,7 @@ export const ImgToBar = () => {
             <p>Either enter an image or paste text to generate barcodes.</p>
             <input type='file' onChange={handleImage}/>
             
-            <textarea type='text' onChange={handleText} placeholder='Paste text here.'></textarea>
+            <textarea type='text' onChange={handleText} placeholder='Paste text here.' value={textInput}></textarea>
             <div className='buttons'>
                 <button onClick={handleCrop} disabled={cropButtonDisabled}>Crop image</button>
                 <button onClick={handleExtract}>Extract barcode numbers</button>
