@@ -30,6 +30,7 @@ export const ImgToBar = () => {
         const banned = [String(date.getFullYear()), String(date.getFullYear() - 1)]
         const output = ((textInput).match(/\d{4,}/g)).filter(code => !banned.includes(code)) || [];
         setCodes(output);
+        setTextInput('');
     }
     
     function handleImage (event){
